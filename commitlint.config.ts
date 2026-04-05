@@ -1,0 +1,33 @@
+import type { UserConfig } from "@commitlint/types";
+import { RuleConfigSeverity } from "@commitlint/types";
+
+const Configuration: UserConfig = {
+  extends: ["@commitlint/config-conventional"],
+  formatter: "@commitlint/format",
+  rules: {
+    "type-enum": [
+      RuleConfigSeverity.Error,
+      "always",
+      [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "perf",
+        "test",
+        "build",
+        "ci",
+        "chore",
+        "revert",
+        "security",
+        "legal",
+        "kludge",
+        "ai",
+      ],
+    ],
+    "subject-case": [RuleConfigSeverity.Error, "never", ["upper-case"]],
+  },
+};
+
+export default Configuration;
