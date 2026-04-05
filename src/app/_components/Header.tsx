@@ -8,10 +8,7 @@ export function Header() {
     <header className="sticky top-0 z-10 bg-base-100/90 backdrop-blur-2xl">
       <div className="container navbar">
         <div className="flex-1">
-          <Link
-            href="/"
-            className="btn btn-link h-auto px-0 no-underline light:text-neutral dark:text-neutral-content"
-          >
+          <Link href="/" className="btn btn-link h-auto px-0 no-underline dark:opacity-80">
             <Image
               src="/vercel.svg"
               alt="Vercel logo"
@@ -20,7 +17,7 @@ export function Header() {
               priority
               className="size-6 dark:invert"
             />
-            <span className="max-sm:sr-only ml-2 text-xl font-bold tracking-tight">Daily News</span>
+            <span className="max-sm:sr-only text-xl font-bold tracking-tight">Daily News</span>
           </Link>
         </div>
         <nav aria-label="Primary">

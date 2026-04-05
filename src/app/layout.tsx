@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/app/_components/Header";
 import { ThemeProvider } from "@/app/_components/ThemeProvider";
+import { Footer } from "@/app/_components/Footer";
 import "@/app/globals.css";
 
 const geistSans = Geist({
@@ -39,7 +40,8 @@ export default function RootLayout({
           value={{ light: "daily-news-light", dark: "daily-news-dark" }}
         >
           <Header />
-          {children}
+          <main className="flex-1">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

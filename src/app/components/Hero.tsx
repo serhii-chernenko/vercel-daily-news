@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { ArrowRight, Rss } from "lucide-react";
 
-export default function Hero() {
+export function Hero() {
   return (
     <section className="hero bg-base-200 min-h-screen">
       <div className="hero-content container justify-start">
-        <div className="max-w-xl">
+        <div className="sm:max-w-xl">
           <h2 className="mb-4 text-md font-bold uppercase text-base-content/50 tracking-widest">
             The Vercel Daily
           </h2>

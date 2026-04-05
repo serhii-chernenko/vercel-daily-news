@@ -3,7 +3,7 @@
 @plugin "daisyui" {
   themes:
     daily-news-light --default,
-    daily-news-dark --prefersdark;
+    daily-news-dark;
   logs: false;
 }
 
@@ -35,8 +35,8 @@
   --radius-selector: 2rem;
   --radius-field: 0.5rem;
   --radius-box: 0.5rem;
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
+  --size-selector: 0.3rem;
+  --size-field: 0.3rem;
   --border: 1px;
   --depth: 1;
   --noise: 1;
@@ -45,7 +45,7 @@
 @plugin "daisyui/theme" {
   name: "daily-news-dark";
   default: false;
-  prefersdark: true;
+  prefersdark: false;
   color-scheme: "dark";
   --color-base-100: oklch(0% 0 0);
   --color-base-200: oklch(19% 0 0);
@@ -70,8 +70,8 @@
   --radius-selector: 2rem;
   --radius-field: 0.5rem;
   --radius-box: 0.5rem;
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
+  --size-selector: 0.3rem;
+  --size-field: 0.3rem;
   --border: 1px;
   --depth: 0;
   --noise: 1;
