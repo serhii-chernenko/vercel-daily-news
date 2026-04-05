@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark;
   logs: false;
 }
 
 @plugin "daisyui/theme" {
-  name: "lofi";
+  name: "light";
   default: true;
   prefersdark: false;
   color-scheme: "light";
@@ -13,7 +16,7 @@
   --color-base-200: oklch(97% 0 0);
   --color-base-300: oklch(94% 0 0);
   --color-base-content: oklch(0% 0 0);
-  --color-primary: oklch(15.906% 0 0);
+  --color-neutral: oklch(0% 0 0);
   --color-primary-content: oklch(100% 0 0);
   --color-secondary: oklch(21.455% 0.001 17.278);
   --color-secondary-content: oklch(100% 0 0);
@@ -40,7 +43,7 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "black";
+  name: "dark";
   default: false;
   prefersdark: true;
   color-scheme: "dark";
@@ -75,7 +78,30 @@
 }
 
 @custom-variant light {
-  @media (prefers-color-scheme: light) {
+  &:where([data-theme="light"], [data-theme="light"] *) {
     @slot;
   }
+}
+
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+}
+
+/* https://github.com/tailwindlabs/tailwindcss/discussions/18091 */
+@utility hitslop {
+  @apply relative cursor-pointer;
+
+  &::before {
+    @apply content-[''] absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2;
+  }
+}
+
+@utility container {
+  @apply mx-auto w-full max-w-[1920px] px-4;
+}
+
+@utility icon {
+  @apply inline-block size-6;
 }
