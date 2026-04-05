@@ -6,11 +6,11 @@ import { ThemeToggle } from "./ThemeToggle";
 export function Header() {
   return (
     <header className="sticky top-0 z-10 bg-base-100/90 backdrop-blur-2xl">
-      <div className="navbar">
+      <div className="container navbar">
         <div className="flex-1">
           <Link
             href="/"
-            className="btn btn-link h-auto no-underline light:text-neutral dark:text-neutral-content"
+            className="btn btn-link h-auto px-0 no-underline light:text-neutral dark:text-neutral-content"
           >
             <Image
               src="/vercel.svg"
@@ -24,7 +24,7 @@ export function Header() {
           </Link>
         </div>
         <nav aria-label="Primary">
-          <ul className="menu menu-horizontal gap-1">
+          <ul className="menu menu-horizontal gap-1 p-0">
             <li>
               <Link
                 href="/"

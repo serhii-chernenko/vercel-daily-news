@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Header } from "./_components/Header";
-import { ThemeProvider } from "./_components/ThemeProvider";
-import "./globals.css";
+import { Header } from "@/app/_components/Header";
+import { ThemeProvider } from "@/app/_components/ThemeProvider";
+import "@/app/globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,8 +35,8 @@ export default function RootLayout({
           attribute="data-theme"
           defaultTheme="system"
           enableSystem
-          themes={["light", "dark", "system"]}
-          value={{ light: "light", dark: "dark" }}
+          themes={["daily-news-light", "daily-news-dark", "system"]}
+          value={{ light: "daily-news-light", dark: "daily-news-dark" }}
         >
           <Header />
           {children}
