@@ -6,7 +6,15 @@
   "env": {
     "builtin": true
   },
-  "ignorePatterns": [".agents/**", ".next/**", "AGENTS.md", "out/**", "build/**", "next-env.d.ts"],
+  "ignorePatterns": [
+    ".agents/**",
+    ".next/**",
+    "AGENTS.md",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    ".github/**"
+  ],
   "rules": {
     "@next/next/google-font-display": "warn",
     "@next/next/google-font-preconnect": "warn",
