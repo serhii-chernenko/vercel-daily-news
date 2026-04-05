@@ -15,7 +15,7 @@ export function Footer() {
             alt="Vercel logo"
             width={24}
             height={24}
-            priority
+            loading="lazy"
             className="size-6 invert dark:opacity-80"
           />
           <span className="sr-only">Daily News</span>
@@ -34,7 +34,8 @@ export function Footer() {
             alt="GitHub"
             width={24}
             height={24}
-            className="invert dark:opacity-80"
+            loading="lazy"
+            className="w-auto invert dark:opacity-80"
           />
         </Link>
       </nav>

@@ -5,7 +5,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-10 bg-base-100/90 backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 bg-base-100/90 backdrop-blur-2xl">
       <div className="container navbar">
         <div className="flex-1">
           <Link href="/" className="btn btn-link h-auto px-0 no-underline dark:opacity-80">
@@ -14,7 +14,7 @@ export function Header() {
               alt="Vercel logo"
               width={24}
               height={24}
-              priority
+              preload
               className="size-6 dark:invert"
             />
             <span className="max-sm:sr-only text-xl font-bold tracking-tight">Daily News</span>
