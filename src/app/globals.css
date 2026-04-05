@@ -2,23 +2,23 @@
 
 @plugin "daisyui" {
   themes:
-    light --default,
-    dark --prefersdark;
+    daily-news-light --default,
+    daily-news-dark --prefersdark;
   logs: false;
 }
 
 @plugin "daisyui/theme" {
-  name: "light";
+  name: "daily-news-light";
   default: true;
   prefersdark: false;
   color-scheme: "light";
   --color-base-100: oklch(100% 0 0);
-  --color-base-200: oklch(97% 0 0);
+  --color-base-200: oklch(98% 0 0);
   --color-base-300: oklch(94% 0 0);
   --color-base-content: oklch(0% 0 0);
-  --color-neutral: oklch(0% 0 0);
+  --color-primary: oklch(15% 0 0);
   --color-primary-content: oklch(100% 0 0);
-  --color-secondary: oklch(21.455% 0.001 17.278);
+  --color-secondary: oklch(15% 0 0);
   --color-secondary-content: oklch(100% 0 0);
   --color-accent: oklch(26.861% 0 0);
   --color-accent-content: oklch(100% 0 0);
@@ -33,28 +33,28 @@
   --color-error: oklch(63% 0.237 25.331);
   --color-error-content: oklch(15.732% 0.03 28.47);
   --radius-selector: 2rem;
-  --radius-field: 0.25rem;
+  --radius-field: 0.5rem;
   --radius-box: 0.5rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
-  --depth: 0;
+  --depth: 1;
   --noise: 1;
 }
 
 @plugin "daisyui/theme" {
-  name: "dark";
+  name: "daily-news-dark";
   default: false;
   prefersdark: true;
   color-scheme: "dark";
   --color-base-100: oklch(0% 0 0);
   --color-base-200: oklch(19% 0 0);
   --color-base-300: oklch(22% 0 0);
-  --color-base-content: oklch(87.609% 0 0);
-  --color-primary: oklch(35% 0 0);
-  --color-primary-content: oklch(100% 0 0);
-  --color-secondary: oklch(35% 0 0);
-  --color-secondary-content: oklch(100% 0 0);
+  --color-base-content: oklch(85% 0 0);
+  --color-primary: oklch(85% 0 0);
+  --color-primary-content: oklch(22% 0 0);
+  --color-secondary: oklch(85% 0 0);
+  --color-secondary-content: oklch(22% 0 0);
   --color-accent: oklch(35% 0 0);
   --color-accent-content: oklch(100% 0 0);
   --color-neutral: oklch(35% 0 0);
@@ -68,7 +68,7 @@
   --color-error: oklch(70% 0.191 22.216);
   --color-error-content: oklch(12.559% 0.051 29.233);
   --radius-selector: 2rem;
-  --radius-field: 0.25rem;
+  --radius-field: 0.5rem;
   --radius-box: 0.5rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
@@ -78,13 +78,13 @@
 }
 
 @custom-variant light {
-  &:where([data-theme="light"], [data-theme="light"] *) {
+  &:where([data-theme="daily-news-light"], [data-theme="daily-news-light"] *) {
     @slot;
   }
 }
 
 @custom-variant dark {
-  &:where([data-theme="dark"], [data-theme="dark"] *) {
+  &:where([data-theme="daily-news-dark"], [data-theme="daily-news-dark"] *) {
     @slot;
   }
 }
