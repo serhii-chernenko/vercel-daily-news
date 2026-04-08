@@ -9,7 +9,10 @@ export function Footer() {
   return (
     <footer className="footer sm:footer-horizontal items-center max-sm:justify-center max-sm:gap-4 p-4 light:bg-base-content light:text-base-100 dark:bg-base-100 dark:text-base-content">
       <aside className="flex items-center">
-        <Link href="/" className="btn btn-link h-auto px-0 no-underline">
+        <Link
+          href="/"
+          className="btn btn-link h-auto px-0 no-underline light:focus-visible:outline-base-100"
+        >
           <Image
             src="/vercel.svg"
             alt="Vercel logo"
@@ -27,7 +30,7 @@ export function Footer() {
           href="https://github.com/serhii-chernenko/vercel-daily-news"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-link btn-square"
+          className="group btn btn-ghost btn-square btn-sm histlop"
         >
           <Image
             src="/github.svg"
@@ -35,7 +38,7 @@ export function Footer() {
             width={24}
             height={24}
             loading="lazy"
-            className="w-auto invert dark:opacity-80"
+            className="size-6 invert transition-all dark:opacity-80 dark:group-focus-visible:opacity-100 dark:motion-safe:group-hover:opacity-100 light:group-hover:invert-0 light:group-focus-visible:invert-0"
           />
         </Link>
       </nav>

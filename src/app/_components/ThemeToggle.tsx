@@ -30,7 +30,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      className="tooltip tooltip-left btn btn-ghost btn-square"
+      className="tooltip tooltip-left btn btn-ghost btn-square btn-sm histlop"
       aria-label={label}
       data-tip={label}
       onClick={() => setTheme(nextTheme)}

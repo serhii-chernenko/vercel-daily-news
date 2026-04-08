@@ -27,7 +27,7 @@ export function Header() {
                 href="/"
                 aria-label="Home"
                 data-tip="Home page"
-                className="tooltip tooltip-bottom btn btn-ghost btn-square"
+                className="tooltip tooltip-bottom btn btn-ghost btn-square btn-sm histlop"
               >
                 <Home className="icon" />
                 <span className="sr-only">Home page</span>
@@ -38,7 +38,7 @@ export function Header() {
                 href="/"
                 aria-label="Search"
                 data-tip="Search page"
-                className="tooltip tooltip-bottom btn btn-ghost btn-square"
+                className="tooltip tooltip-bottom btn btn-ghost btn-square btn-sm histlop"
               >
                 <Search className="icon" />
                 <span className="sr-only">Search</span>
