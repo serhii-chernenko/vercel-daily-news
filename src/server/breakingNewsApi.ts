@@ -1,13 +1,11 @@
-"use server";
+import "server-only";
 
-import { getApiHeaders, getApiUrl } from "@/server/api";
 import type { BreakingNews, BreakingNewsResponse } from "@/types/api";
+import { getApiHeaders, getApiUrl } from "@/server/api";
 
 export async function getBreakingNews(): Promise<BreakingNews | null> {
   try {
-    const breakingNewsUrl = getApiUrl("breakingNews");
-    const response = await fetch(breakingNewsUrl, {
-      cache: "no-store",
+    const response = await fetch(getApiUrl("breakingNews"), {
       headers: getApiHeaders(),
     });
 

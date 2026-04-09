@@ -8,9 +8,7 @@ export const apiEndpoints = {
 
 type ApiEndpoint = keyof typeof apiEndpoints;
 
-function getRequiredEnvVariable(
-  name: "NEXT_VERCEL_NEWS_API_ENDPOINT" | "NEXT_VERCEL_BYPASS_TOKEN",
-) {
+function getRequiredEnvVariable(name: "NEWS_API_ENDPOINT" | "BYPASS_TOKEN") {
   const value = process.env[name];
 
   if (!value) {
@@ -21,7 +19,7 @@ function getRequiredEnvVariable(
 }
 
 export function getApiBaseUrl() {
-  return getRequiredEnvVariable("NEXT_VERCEL_NEWS_API_ENDPOINT").replace(trailingSlashPattern, "");
+  return getRequiredEnvVariable("NEWS_API_ENDPOINT").replace(trailingSlashPattern, "");
 }
 
 export function getApiUrl(endpoint: ApiEndpoint) {
@@ -30,6 +28,6 @@ export function getApiUrl(endpoint: ApiEndpoint) {
 
 export function getApiHeaders() {
   return {
-    "x-vercel-protection-bypass": getRequiredEnvVariable("NEXT_VERCEL_BYPASS_TOKEN"),
+    "x-vercel-protection-bypass": getRequiredEnvVariable("BYPASS_TOKEN"),
   };
 }

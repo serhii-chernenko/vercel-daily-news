@@ -106,6 +106,10 @@
   @apply inline-block size-6;
 }
 
+@utility cta-arrow {
+  @apply size-4 shrink-0 transition-transform lg:group-hover/cta:motion-safe:translate-x-0.5 group-focus-visible/cta:motion-safe:translate-x-0.5;
+}
+
 @layer components {
   :where(a.link) {
     @apply rounded-field;

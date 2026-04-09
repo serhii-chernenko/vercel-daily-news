@@ -38,9 +38,9 @@ export function Hero() {
             place.
           </p>
           <div className="flex max-sm:flex-col gap-4">
-            <Link href="/" className="btn btn-primary">
+            <Link href="/" className="group/cta btn btn-primary">
               <span>Browse articles</span>
-              <ArrowRight className="size-4" />
+              <ArrowRight className="cta-arrow" />
             </Link>
             <button type="button" className="btn btn-primary btn-outline">
               <Rss className="size-4" />
