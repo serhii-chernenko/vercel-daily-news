@@ -36,8 +36,7 @@ export default function RootLayout({
           attribute="data-theme"
           defaultTheme="system"
           enableSystem
-          themes={["daily-news-light", "daily-news-dark", "system"]}
-          value={{ light: "daily-news-light", dark: "daily-news-dark" }}
+          themes={["light", "dark"]}
         >
           <Header />
           <main className="flex-1">{children}</main>

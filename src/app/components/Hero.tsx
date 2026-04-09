@@ -11,20 +11,21 @@ export function Hero() {
         <div className="relative mb-8">
           <Image
             src="/hero.png"
-            alt="Hero image"
+            alt=""
             width={600}
             height={600}
             preload
             sizes="(min-width: 1280px) 600px, (min-width: 1024px) 480px, (min-width: 768px) 420px, (min-width: 640px) 360px, 320px"
             className="h-auto w-80 sm:w-[360px] md:w-[420px] lg:w-[480px] xl:w-[600px] dark:invert light:grayscale-100"
           />
-          <span className="badge badge-xs absolute -bottom-2 right-0">
+          <span aria-hidden="true" className="badge badge-xs absolute -bottom-2 right-0">
             Designed by{" "}
             <Link
               href="https://www.freepik.com/free-vector/business-teamwork-sketch-concept_9581242.htm"
               target="_blank"
               rel="noopener noreferrer"
               className="link"
+              tabIndex={-1}
             >
               Freepik
             </Link>
@@ -42,7 +43,7 @@ export function Hero() {
           <div className="flex max-sm:flex-col gap-4">
             <Link href="/" className="group/cta btn btn-primary">
               <span>Browse articles</span>
-              <ArrowRight className="cta-arrow" />
+              <ArrowRight className="cta-icon" />
             </Link>
             <button type="button" className="btn btn-primary btn-outline">
               <Rss className="size-4" />

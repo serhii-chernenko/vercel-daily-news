@@ -1,6 +1,6 @@
 import "server-only";
 
-import { cacheLife, cacheTag } from "next/cache";
+import { cacheLife } from "next/cache";
 import { getBreakingNews } from "@/server/breakingNewsApi";
 import Link from "next/link";
 import { TriangleAlert, ArrowRight } from "lucide-react";
@@ -36,10 +36,25 @@ export async function BreakingNewsBanner() {
                 </span>
               )}
               <span className="min-w-0 truncate text-sm font-medium">{banner.headline}</span>
-              <ArrowRight className="cta-arrow" />
+              <ArrowRight className="cta-icon" />
             </span>
           </span>
         </Link>
+      </div>
+    </aside>
+  );
+}
+
+export function BreakingNewsBannerSkeleton() {
+  return (
+    <aside aria-hidden="true" className="relative z-50 bg-primary text-primary-content">
+      <div className="container">
+        <div className="flex min-h-12 items-center py-2">
+          <div className="flex w-full items-center justify-center gap-2">
+            <span className="w-92 h-4 rounded bg-primary-content/20 motion-safe:animate-pulse" />
+            <span className="size-4 shrink-0 rounded bg-primary-content/20 motion-safe:animate-pulse" />
+          </div>
+        </div>
       </div>
     </aside>
   );

@@ -1,14 +1,12 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-  themes:
-    daily-news-light --default,
-    daily-news-dark;
+  themes: false;
   logs: false;
 }
 
 @plugin "daisyui/theme" {
-  name: "daily-news-light";
+  name: "light";
   default: true;
   prefersdark: false;
   color-scheme: "light";
@@ -43,7 +41,7 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "daily-news-dark";
+  name: "dark";
   default: false;
   prefersdark: false;
   color-scheme: "dark";
@@ -78,13 +76,13 @@
 }
 
 @custom-variant light {
-  &:where([data-theme="daily-news-light"], [data-theme="daily-news-light"] *) {
+  &:where([data-theme="light"], [data-theme="light"] *) {
     @slot;
   }
 }
 
 @custom-variant dark {
-  &:where([data-theme="daily-news-dark"], [data-theme="daily-news-dark"] *) {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
     @slot;
   }
 }
@@ -106,7 +104,7 @@
   @apply inline-block size-6;
 }
 
-@utility cta-arrow {
+@utility cta-icon {
   @apply size-4 shrink-0 transition-transform lg:group-hover/cta:motion-safe:translate-x-0.5 group-focus-visible/cta:motion-safe:translate-x-0.5;
 }
 

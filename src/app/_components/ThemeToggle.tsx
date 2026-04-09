@@ -2,9 +2,9 @@
 
 import "client-only";
 
-import { SunMoon, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { SunMoon, Moon, Sun } from "lucide-react";
 
 const systemTheme = "system";
 const lightTheme = "light";
@@ -12,11 +12,15 @@ const darkTheme = "dark";
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  if (!mounted) {
+    return <ThemeToggleSkeleton />;
+  }
 
   const selectedTheme = mounted ? theme : undefined;
   const nextTheme =
@@ -40,5 +44,14 @@ export function ThemeToggle() {
       <Icon className="icon" />
       <span className="sr-only">{label}</span>
     </button>
+  );
+}
+
+export function ThemeToggleSkeleton() {
+  return (
+    <span
+      aria-hidden="true"
+      className="block size-[calc(var(--size-field,.25rem)_*_8)] rounded-field bg-base-300 motion-safe:animate-pulse"
+    ></span>
   );
 }
