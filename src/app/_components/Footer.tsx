@@ -1,11 +1,9 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { CopyrightYear, CopyrightYearSkeleton } from "@/app/_components/CopyrightYear";
 
 export function Footer() {
-  const startYear = 2026;
-  const currentYear = new Date().getFullYear();
-  const yearDisplay = startYear === currentYear ? `${startYear}` : `${startYear} - ${currentYear}`;
-
   return (
     <footer className="footer sm:footer-horizontal items-center max-sm:justify-center max-sm:gap-4 p-4 light:bg-base-content light:text-base-100 dark:bg-base-100 dark:text-base-content">
       <aside className="flex items-center">
@@ -23,7 +21,10 @@ export function Footer() {
           />
           <span className="sr-only">Daily News</span>
         </Link>
-        <p>Copyright © {yearDisplay} - All right reserved</p>
+        <p className="flex items-center gap-1 text-sm">
+          Copyright © <Suspense fallback={<CopyrightYearSkeleton />}>{<CopyrightYear />}</Suspense>{" "}
+          - All right reserved
+        </p>
       </aside>
       <nav className="grid-flow-col gap-4 place-self-center sm:justify-self-end">
         <Link
