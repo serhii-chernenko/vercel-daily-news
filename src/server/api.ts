@@ -3,6 +3,7 @@ import "server-only";
 const trailingSlashPattern = /\/+$/;
 
 export const apiEndpoints = {
+  articles: "/articles",
   breakingNews: "/breaking-news",
 } as const;
 

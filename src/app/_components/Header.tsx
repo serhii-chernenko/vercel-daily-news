@@ -1,15 +1,21 @@
 import "server-only";
 
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Home, Search } from "lucide-react";
-import { ThemeToggle } from "@/app/_components/ThemeToggle";
-import { BreakingNewsBanner } from "@/app/_components/BreakingNewsBanner";
+import { ThemeToggle, ThemeToggleSkeleton } from "@/app/_components/ThemeToggle";
+import {
+  BreakingNewsBanner,
+  BreakingNewsBannerSkeleton,
+} from "@/app/_components/BreakingNewsBanner";
 
 export function Header() {
   return (
     <>
-      <BreakingNewsBanner />
+      <Suspense fallback={<BreakingNewsBannerSkeleton />}>
+        <BreakingNewsBanner />
+      </Suspense>
       <header className="sticky top-0 z-40 bg-base-100/90 backdrop-blur-2xl relative">
         <div className="container navbar relative z-20">
           <div className="flex-1">
@@ -48,7 +54,9 @@ export function Header() {
                 </Link>
               </li>
               <li>
-                <ThemeToggle />
+                <Suspense fallback={<ThemeToggleSkeleton />}>
+                  <ThemeToggle />
+                </Suspense>
               </li>
             </ul>
           </nav>
