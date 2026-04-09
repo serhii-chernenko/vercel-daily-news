@@ -19,7 +19,7 @@ export function Footer() {
             width={24}
             height={24}
             loading="lazy"
-            className="size-6 invert dark:opacity-80"
+            className="size-6 invert"
           />
           <span className="sr-only">Daily News</span>
         </Link>
@@ -38,7 +38,7 @@ export function Footer() {
             width={24}
             height={24}
             loading="lazy"
-            className="size-6 invert transition-all dark:opacity-80 dark:group-focus-visible:opacity-100 dark:motion-safe:group-hover:opacity-100 light:group-hover:invert-0 light:group-focus-visible:invert-0"
+            className="size-6 invert transition-all light:group-hover:invert-0 light:group-focus-visible:invert-0"
           />
         </Link>
       </nav>

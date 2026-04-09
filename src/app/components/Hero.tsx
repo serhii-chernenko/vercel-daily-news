@@ -42,7 +42,7 @@ export function Hero() {
               <span>Browse articles</span>
               <ArrowRight className="size-4" />
             </Link>
-            <button type="button" className="btn btn-secondary btn-outline">
+            <button type="button" className="btn btn-primary btn-outline">
               <Rss className="size-4" />
               <span>Subscribe</span>
             </button>

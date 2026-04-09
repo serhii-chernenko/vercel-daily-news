@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Home, Search } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "@/app/_components/ThemeToggle";
+import { BreakingNewsBanner } from "@/app/_components/BreakingNewsBanner";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-base-100/90 backdrop-blur-2xl">
-      <div className="container navbar">
+    <header className="sticky top-0 z-50 bg-base-100/90 backdrop-blur-2xl relative">
+      <div className="container navbar relative z-20">
         <div className="flex-1">
-          <Link href="/" className="btn btn-link h-auto px-0 no-underline dark:opacity-80">
+          <Link href="/" className="btn btn-link h-auto px-0 no-underline">
             <Image
               src="/vercel.svg"
               alt="Vercel logo"
@@ -23,12 +24,7 @@ export function Header() {
         <nav aria-label="Primary">
           <ul className="menu menu-horizontal gap-1 p-0">
             <li>
-              <Link
-                href="/"
-                aria-label="Home"
-                data-tip="Home page"
-                className="tooltip tooltip-bottom btn btn-ghost btn-square btn-sm histlop"
-              >
+              <Link href="/" aria-label="Home" className="btn btn-ghost btn-square btn-sm histlop">
                 <Home className="icon" />
                 <span className="sr-only">Home page</span>
               </Link>
@@ -37,8 +33,7 @@ export function Header() {
               <Link
                 href="/"
                 aria-label="Search"
-                data-tip="Search page"
-                className="tooltip tooltip-bottom btn btn-ghost btn-square btn-sm histlop"
+                className="btn btn-ghost btn-square btn-sm histlop"
               >
                 <Search className="icon" />
                 <span className="sr-only">Search</span>
@@ -50,6 +45,7 @@ export function Header() {
           </ul>
         </nav>
       </div>
+      <BreakingNewsBanner />
     </header>
   );
 }
