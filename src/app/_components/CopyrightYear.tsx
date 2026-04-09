@@ -4,7 +4,7 @@ import "server-only";
 export async function CopyrightYear() {
   "use cache";
 
-  cacheLife("years");
+  cacheLife("days");
 
   const startYear = 2026;
   const currentYear = new Date().getFullYear();
