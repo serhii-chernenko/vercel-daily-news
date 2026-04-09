@@ -1,5 +1,7 @@
 "use client";
 
+import "client-only";
+
 import { SunMoon, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";

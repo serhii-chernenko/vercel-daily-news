@@ -1,3 +1,5 @@
+import "server-only";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Rss } from "lucide-react";

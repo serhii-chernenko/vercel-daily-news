@@ -1,4 +1,5 @@
 import { cacheLife } from "next/cache";
+import "server-only";
 
 export async function CopyrightYear() {
   "use cache";
