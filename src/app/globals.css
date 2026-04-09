@@ -18,8 +18,8 @@
   --color-base-content: oklch(0% 0 0);
   --color-primary: oklch(15% 0 0);
   --color-primary-content: oklch(100% 0 0);
-  --color-secondary: oklch(15% 0 0);
-  --color-secondary-content: oklch(100% 0 0);
+  --color-secondary: oklch(100% 0 0);
+  --color-secondary-content: oklch(0% 0 0);
   --color-accent: oklch(26.861% 0 0);
   --color-accent-content: oklch(100% 0 0);
   --color-neutral: oklch(0% 0 0);
@@ -32,7 +32,7 @@
   --color-warning-content: oklch(17.674% 0.027 79.94);
   --color-error: oklch(63% 0.237 25.331);
   --color-error-content: oklch(15.732% 0.03 28.47);
-  --radius-selector: 2rem;
+  --radius-selector: 0.5rem;
   --radius-field: 0.5rem;
   --radius-box: 0.5rem;
   --size-selector: 0.3rem;
@@ -50,11 +50,11 @@
   --color-base-100: oklch(0% 0 0);
   --color-base-200: oklch(19% 0 0);
   --color-base-300: oklch(22% 0 0);
-  --color-base-content: oklch(85% 0 0);
-  --color-primary: oklch(85% 0 0);
-  --color-primary-content: oklch(22% 0 0);
-  --color-secondary: oklch(85% 0 0);
-  --color-secondary-content: oklch(22% 0 0);
+  --color-base-content: oklch(100% 0 0);
+  --color-primary: oklch(100% 0 0);
+  --color-primary-content: oklch(0% 0 0);
+  --color-secondary: oklch(0% 0 0);
+  --color-secondary-content: oklch(100% 0 0);
   --color-accent: oklch(35% 0 0);
   --color-accent-content: oklch(100% 0 0);
   --color-neutral: oklch(35% 0 0);
@@ -67,7 +67,7 @@
   --color-warning-content: oklch(19.359% 0.042 109.769);
   --color-error: oklch(70% 0.191 22.216);
   --color-error-content: oklch(12.559% 0.051 29.233);
-  --radius-selector: 2rem;
+  --radius-selector: 0.5rem;
   --radius-field: 0.5rem;
   --radius-box: 0.5rem;
   --size-selector: 0.3rem;
@@ -104,4 +104,14 @@
 
 @utility icon {
   @apply inline-block size-6;
+}
+
+@utility cta-arrow {
+  @apply size-4 shrink-0 transition-transform lg:group-hover/cta:motion-safe:translate-x-0.5 group-focus-visible/cta:motion-safe:translate-x-0.5;
+}
+
+@layer components {
+  :where(a.link) {
+    @apply rounded-field;
+  }
 }

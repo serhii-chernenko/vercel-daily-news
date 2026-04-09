@@ -1,3 +1,5 @@
+import "server-only";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Rss } from "lucide-react";
@@ -38,11 +40,11 @@ export function Hero() {
             place.
           </p>
           <div className="flex max-sm:flex-col gap-4">
-            <Link href="/" className="btn btn-primary">
+            <Link href="/" className="group/cta btn btn-primary">
               <span>Browse articles</span>
-              <ArrowRight className="size-4" />
+              <ArrowRight className="cta-arrow" />
             </Link>
-            <button type="button" className="btn btn-secondary btn-outline">
+            <button type="button" className="btn btn-primary btn-outline">
               <Rss className="size-4" />
               <span>Subscribe</span>
             </button>
