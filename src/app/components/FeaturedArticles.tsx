@@ -2,6 +2,7 @@ import "server-only";
 
 import { cacheLife, cacheTag } from "next/cache";
 import { appConfig } from "@/config/app";
+import { ArticleCarousel, ArticleCarouselItem } from "@/app/components/ArticleCarousel";
 import { getFeaturedArticles } from "@/server/featuredArticlesApi";
 import { ArticleCard, ArticleCardSkeleton } from "@/app/components/ArticleCard";
 
@@ -17,19 +18,25 @@ export async function FeaturedArticles() {
     return null;
   }
 
+  const headingId = "featured-articles-heading";
+
   return (
-    <section className="flex flex-col gap-8 py-16 sm:py-20">
+    <section aria-labelledby={headingId} className="flex flex-col gap-8 py-16 sm:py-20">
       <div className="container">
         <div className="max-w-2xl mx-auto space-y-3 text-center">
-          <h2 className="text-4xl font-bold tracking-tight text-base-content">Featured</h2>
+          <h2 id={headingId} className="text-4xl font-bold tracking-tight text-base-content">
+            Featured
+          </h2>
           <p className="text-base text-base-content/70">Handpicked stories from the team.</p>
         </div>
       </div>
-      <div className="carousel">
+      <ArticleCarousel>
         {articles.map((article) => (
-          <ArticleCard key={article.id} article={article} />
+          <ArticleCarouselItem key={article.id}>
+            <ArticleCard article={article} />
+          </ArticleCarouselItem>
         ))}
-      </div>
+      </ArticleCarousel>
     </section>
   );
 }
@@ -43,11 +50,13 @@ export function FeaturedArticlesSkeleton() {
           <div className="w-72 h-4 mx-auto skeleton" />
         </div>
       </div>
-      <div className="carousel">
+      <ArticleCarousel>
         {Array.from({ length: appConfig.articles.featuredLimit }, (_, index) => (
-          <ArticleCardSkeleton key={index} />
+          <ArticleCarouselItem key={index}>
+            <ArticleCardSkeleton />
+          </ArticleCarouselItem>
         ))}
-      </div>
+      </ArticleCarousel>
     </section>
   );
 }

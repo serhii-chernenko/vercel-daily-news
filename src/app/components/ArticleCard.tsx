@@ -12,18 +12,13 @@ function getArticleHref(slug: string): Route {
   return `/articles/${encodeURIComponent(slug)}` as Route;
 }
 
-const carouselItemBaseClassName =
-  "carousel-item my-4 mb-10 w-4/5 sm:w-3/5 md:w-1/2 lg:w-1/3 xl:w-[calc(25%-(var(--spacing)*5))] ml-4 scroll-ml-4 last:mr-4 last:scroll-mr-4";
-
 export function ArticleCard({ article, className }: { article: Article; className?: string }) {
   const href = getArticleHref(article.slug);
-  const titleId = `article-card-title-${article.id}`;
 
   return (
-    <article className={clsx(carouselItemBaseClassName, className)}>
+    <article className={clsx("h-full", className)}>
       <Link
         href={href}
-        aria-labelledby={titleId}
         className="group card flex size-full overflow-hidden bg-base-100 no-underline shadow-sm ring-1 ring-base-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 focus-visible:motion-safe:shadow-xl focus-visible:motion-safe:-translate-y-1"
       >
         <figure className="relative aspect-video bg-base-300">
@@ -38,7 +33,7 @@ export function ArticleCard({ article, className }: { article: Article; classNam
             />
           ) : (
             <div className="flex items-center justify-center size-full">
-              <ImageOff className="size-12 opacity-50" />
+              <ImageOff aria-hidden="true" className="size-12 opacity-50" />
               <span className="sr-only">Image coming soon</span>
             </div>
           )}
@@ -49,14 +44,15 @@ export function ArticleCard({ article, className }: { article: Article; classNam
             <span>&middot;</span>
             <time dateTime={article.publishedAt}>{formatPublishedDate(article.publishedAt)}</time>
           </div>
-          <h2 id={titleId} className="card-title text-2xl leading-tight">
-            {article.title}
-          </h2>
+          <h3 className="card-title text-2xl leading-tight">{article.title}</h3>
           {article.excerpt && <p className="text-sm text-base-content/70">{article.excerpt}</p>}
           <div className="card-actions justify-end">
             <span className="group/cta btn btn-primary btn-sm">
               Read article
-              <ArrowRight className="cta-icon group-focus-visible:motion-safe:translate-x-0.5" />
+              <ArrowRight
+                aria-hidden="true"
+                className="cta-icon group-focus-visible:motion-safe:translate-x-0.5"
+              />
             </span>
           </div>
         </div>
@@ -70,7 +66,6 @@ export function ArticleCardSkeleton({ className }: { className?: string }) {
     <div
       className={clsx(
         "card size-full overflow-hidden bg-base-100 shadow-sm ring-1 ring-base-300",
-        carouselItemBaseClassName,
         className,
       )}
     >
