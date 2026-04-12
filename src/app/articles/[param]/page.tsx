@@ -1,6 +1,7 @@
 import "server-only";
 
 import type { Metadata } from "next";
+import type { Article } from "@/types/api";
 import { ArticlePageContent } from "@/app/articles/[param]/ArticlePageContent";
 import { getArticleDescription, getCachedArticle } from "@/app/articles/[param]/articlePageData";
 import { appConfig } from "@/config/app";
@@ -26,25 +27,41 @@ export const unstable_instant = {
 
 export type ArticlePageProps = PageProps<"/articles/[param]">;
 
+function dedupeArticlesBySlug(articles: Article[]) {
+  const uniqueSlugs = new Set<string>();
+
+  return articles.filter((article) => {
+    if (uniqueSlugs.has(article.slug)) {
+      return false;
+    }
+
+    uniqueSlugs.add(article.slug);
+
+    return true;
+  });
+}
+
 export async function generateStaticParams() {
   const [featuredArticles, trendingArticles] = await Promise.all([
     getFeaturedArticles(appConfig.articles.featuredLimit),
     getTrendingArticles({ limit: appConfig.articles.trendingLimit }),
   ]);
-  const articles = [...featuredArticles, ...trendingArticles];
-  const uniqueSlugs = new Set<string>();
+  const relatedTrendingArticles = await Promise.all(
+    trendingArticles.map((article) =>
+      getTrendingArticles({
+        exclude: article.id,
+        limit: appConfig.articles.trendingLimit,
+      }),
+    ),
+  );
 
-  return articles.flatMap((article) => {
-    if (uniqueSlugs.has(article.slug)) {
-      return [];
-    }
-
-    uniqueSlugs.add(article.slug);
-
-    return {
-      param: article.slug,
-    };
-  });
+  return dedupeArticlesBySlug([
+    ...featuredArticles,
+    ...trendingArticles,
+    ...relatedTrendingArticles.flat(),
+  ]).map((article) => ({
+    param: article.slug,
+  }));
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
