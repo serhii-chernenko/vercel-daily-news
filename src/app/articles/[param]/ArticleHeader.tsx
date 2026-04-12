@@ -57,6 +57,7 @@ export function ArticleHeader({ article }: { article: Article }) {
                 alt={article.title}
                 fill
                 preload
+                loading="eager"
                 sizes="(min-width: 1920px) 1886px, calc(100vw - 2rem)"
                 className="object-cover object-center"
               />

@@ -1,9 +1,12 @@
 import "server-only";
 
 import type { Article, ArticlesResponse } from "@/types/api";
+import { appConfig } from "@/config/app";
 import { getApiHeaders, getApiUrl } from "@/server/api";
 
-export async function getFeaturedArticles(limit = 6): Promise<Article[]> {
+export async function getFeaturedArticles(
+  limit = appConfig.articles.featuredLimit,
+): Promise<Article[]> {
   try {
     const url = new URL(getApiUrl("articles"));
 

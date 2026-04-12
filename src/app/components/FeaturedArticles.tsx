@@ -1,8 +1,9 @@
 import "server-only";
 
 import { cacheLife, cacheTag } from "next/cache";
+import { appConfig } from "@/config/app";
 import { getFeaturedArticles } from "@/server/featuredArticlesApi";
-import { ArticleCard } from "@/app/components/ArticleCard";
+import { ArticleCard, ArticleCardSkeleton } from "@/app/components/ArticleCard";
 
 export async function FeaturedArticles() {
   "use cache";
@@ -10,24 +11,24 @@ export async function FeaturedArticles() {
   cacheLife("minutes");
   cacheTag("featured-articles");
 
-  const articles = await getFeaturedArticles(6);
+  const articles = await getFeaturedArticles(appConfig.articles.featuredLimit);
 
   if (articles.length === 0) {
     return null;
   }
 
   return (
-    <section className="py-16 sm:py-20">
-      <div className="container flex flex-col gap-8">
-        <div className="max-w-2xl space-y-3">
+    <section className="flex flex-col gap-8 py-16 sm:py-20">
+      <div className="container">
+        <div className="max-w-2xl mx-auto space-y-3 text-center">
           <h2 className="text-4xl font-bold tracking-tight text-base-content">Featured</h2>
           <p className="text-base text-base-content/70">Handpicked stories from the team.</p>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {articles.map((article) => (
-            <ArticleCard key={article.id} article={article} />
-          ))}
-        </div>
+      </div>
+      <div className="carousel">
+        {articles.map((article) => (
+          <ArticleCard key={article.id} article={article} />
+        ))}
       </div>
     </section>
   );
@@ -35,41 +36,17 @@ export async function FeaturedArticles() {
 
 export function FeaturedArticlesSkeleton() {
   return (
-    <section aria-hidden="true" className="py-16 sm:py-20">
-      <div className="container flex flex-col gap-8">
-        <div className="max-w-2xl space-y-4 mt-3">
-          <div className="h-8 w-48 skeleton" />
-          <div className="h-4 w-72 skeleton" />
+    <section aria-hidden="true" className="flex flex-col gap-8 py-16 sm:py-20">
+      <div className="container">
+        <div className="max-w-2xl mx-auto mt-3 space-y-4 text-center">
+          <div className="w-48 h-8 mx-auto skeleton" />
+          <div className="w-72 h-4 mx-auto skeleton" />
         </div>
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {Array.from({ length: 6 }, (_, index) => (
-            <div
-              key={index}
-              className="card h-full overflow-hidden bg-base-100 shadow-sm ring-1 ring-base-300"
-            >
-              <div className="aspect-video rounded-box skeleton" />
-              <div className="card-body gap-4">
-                <div className="flex items-center gap-2">
-                  <div className="h-3 w-20 skeleton" />
-                  <div className="size-1 skeleton" />
-                  <div className="h-3 w-32 skeleton" />
-                </div>
-                <div className="space-y-2">
-                  <div className="h-7 w-full skeleton" />
-                  <div className="h-7 w-4/5 skeleton" />
-                </div>
-                <div className="space-y-2">
-                  <div className="h-4 w-full skeleton" />
-                  <div className="h-4 w-full skeleton" />
-                  <div className="h-4 w-3/4 skeleton" />
-                </div>
-                <div className="card-actions justify-end">
-                  <div className="h-8 w-28 rounded-field skeleton" />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+      </div>
+      <div className="carousel">
+        {Array.from({ length: appConfig.articles.featuredLimit }, (_, index) => (
+          <ArticleCardSkeleton key={index} />
+        ))}
       </div>
     </section>
   );

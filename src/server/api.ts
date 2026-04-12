@@ -5,6 +5,7 @@ const trailingSlashPattern = /\/+$/;
 export const apiEndpoints = {
   articles: "/articles",
   breakingNews: "/breaking-news",
+  trendingArticles: "/articles/trending",
 } as const;
 
 type ApiEndpoint = keyof typeof apiEndpoints;

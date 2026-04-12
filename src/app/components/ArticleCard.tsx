@@ -6,21 +6,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatPublishedDate } from "@/utils/date";
 import { ArrowRight, ImageOff } from "lucide-react";
+import { clsx } from "clsx";
 
 function getArticleHref(slug: string): Route {
   return `/articles/${encodeURIComponent(slug)}` as Route;
 }
 
-export function ArticleCard({ article }: { article: Article }) {
+const carouselItemBaseClassName =
+  "carousel-item my-4 mb-10 w-4/5 sm:w-3/5 md:w-1/2 lg:w-1/3 xl:w-[calc(25%-(var(--spacing)*5))] ml-4 scroll-ml-4 last:mr-4 last:scroll-mr-4";
+
+export function ArticleCard({ article, className }: { article: Article; className?: string }) {
   const href = getArticleHref(article.slug);
   const titleId = `article-card-title-${article.id}`;
 
   return (
-    <article>
+    <article className={clsx(carouselItemBaseClassName, className)}>
       <Link
         href={href}
         aria-labelledby={titleId}
-        className="group card flex h-full overflow-hidden bg-base-100 no-underline shadow-sm ring-1 ring-base-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 focus-visible:motion-safe:shadow-xl focus-visible:motion-safe:-translate-y-1"
+        className="group card flex size-full overflow-hidden bg-base-100 no-underline shadow-sm ring-1 ring-base-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 focus-visible:motion-safe:shadow-xl focus-visible:motion-safe:-translate-y-1"
       >
         <figure className="relative aspect-video bg-base-300">
           {article.image ? (
@@ -58,5 +62,38 @@ export function ArticleCard({ article }: { article: Article }) {
         </div>
       </Link>
     </article>
+  );
+}
+
+export function ArticleCardSkeleton({ className }: { className?: string }) {
+  return (
+    <div
+      className={clsx(
+        "card size-full overflow-hidden bg-base-100 shadow-sm ring-1 ring-base-300",
+        carouselItemBaseClassName,
+        className,
+      )}
+    >
+      <div className="aspect-video rounded-box skeleton" />
+      <div className="card-body gap-4">
+        <div className="flex items-center gap-2">
+          <div className="h-3 w-20 skeleton" />
+          <div className="size-1 skeleton" />
+          <div className="h-3 w-32 skeleton" />
+        </div>
+        <div className="space-y-2">
+          <div className="h-7 w-full skeleton" />
+          <div className="h-7 w-4/5 skeleton" />
+        </div>
+        <div className="space-y-2">
+          <div className="h-4 w-full skeleton" />
+          <div className="h-4 w-full skeleton" />
+          <div className="h-4 w-3/4 skeleton" />
+        </div>
+        <div className="card-actions justify-end">
+          <div className="h-8 w-28 rounded-field skeleton" />
+        </div>
+      </div>
+    </div>
   );
 }
