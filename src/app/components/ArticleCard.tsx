@@ -16,7 +16,7 @@ export function ArticleCard({ article, className }: { article: Article; classNam
   const href = getArticleHref(article.slug);
 
   return (
-    <article className={clsx("h-full", className)}>
+    <article className={clsx("size-full", className)}>
       <Link
         href={href}
         className="group card flex size-full overflow-hidden bg-base-100 no-underline shadow-sm ring-1 ring-base-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 focus-visible:motion-safe:shadow-xl focus-visible:motion-safe:-translate-y-1"
