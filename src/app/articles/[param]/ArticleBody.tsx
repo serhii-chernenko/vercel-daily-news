@@ -21,18 +21,12 @@ export function ArticleBodySkeleton() {
     <section aria-hidden="true" className="container py-10 sm:py-12 lg:py-16">
       <div className="flex flex-col gap-5 max-w-4xl mx-auto">
         {Array.from({ length: 6 }, (_, index) => (
-          <div
-            key={index}
-            className={`${index % 3 === 2 ? "w-4/5" : "w-full"} h-5 rounded-field skeleton`}
-          />
+          <div key={index} className={`${index % 3 === 2 ? "w-4/5" : "w-full"} h-5 skeleton`} />
         ))}
-        <div className="w-3/4 h-8 sm:h-10 md:h-12 mt-12 mb-8 rounded-field skeleton" />
-        <div className="sm:hidden w-1/2 h-8 rounded-field skeleton" />
+        <div className="w-3/4 h-8 sm:h-10 md:h-12 mt-12 mb-8 skeleton" />
+        <div className="sm:hidden w-1/2 h-8 skeleton" />
         {Array.from({ length: 12 }, (_, index) => (
-          <div
-            key={index}
-            className={`${index % 3 === 2 ? "w-4/5" : "w-full"} h-5 rounded-field skeleton`}
-          />
+          <div key={index} className={`${index % 3 === 2 ? "w-4/5" : "w-full"} h-5 skeleton`} />
         ))}
       </div>
     </section>
@@ -138,7 +132,7 @@ function renderArticleBlock(block: ArticleContentBlock, articleTitle: string, in
         <Fragment key={`${block.type}-${index}`}>
           {block?.src ? (
             <figure key={`${block.type}-${index}`}>
-              <div className="not-prose relative aspect-16/9 w-full overflow-hidden rounded-box bg-base-300">
+              <div className="not-prose relative aspect-video w-full overflow-hidden rounded-box bg-base-300">
                 <Image
                   src={block.src}
                   alt={block.alt || articleTitle}

@@ -51,7 +51,7 @@ export function ArticleHeader({ article }: { article: Article }) {
         </div>
         <div className="overflow-hidden rounded-box bg-base-300 shadow-sm">
           {article.image ? (
-            <div className="relative aspect-16/9 w-full">
+            <div className="relative aspect-video w-full">
               <Image
                 src={article.image}
                 alt={article.title}
@@ -62,7 +62,7 @@ export function ArticleHeader({ article }: { article: Article }) {
               />
             </div>
           ) : (
-            <div className="flex aspect-16/9 items-center justify-center gap-3 bg-base-300">
+            <div className="flex aspect-video items-center justify-center gap-3 bg-base-300">
               <ImageOff className="size-12 opacity-50" />
               <span className="sr-only">Image coming soon</span>
             </div>
@@ -80,14 +80,14 @@ export function ArticleHeaderSkeleton() {
         <div className="w-20 h-7 rounded-field skeleton" />
         <div className="max-w-4xl space-y-6">
           <div className="space-y-3">
-            <div className="w-2/3 h-8 sm:h-12 md:h-14 rounded-field skeleton" />
-            <div className="w-3/4 h-8 sm:h-12 md:h-14 rounded-field skeleton" />
-            <div className="sm:hidden w-1/2 h-8 rounded-field skeleton" />
+            <div className="w-2/3 h-8 sm:h-12 md:h-14 skeleton" />
+            <div className="w-3/4 h-8 sm:h-12 md:h-14 skeleton" />
+            <div className="sm:hidden w-1/2 h-8 skeleton" />
           </div>
           <div className="space-y-2">
-            <div className="w-2/3 h-6 rounded-field skeleton" />
-            <div className="w-3/4 h-6 rounded-field skeleton" />
-            <div className="sm:hidden w-1/4 h-6 rounded-field skeleton" />
+            <div className="w-2/3 h-6 skeleton" />
+            <div className="w-3/4 h-6 skeleton" />
+            <div className="sm:hidden w-1/4 h-6 skeleton" />
           </div>
           <div className="flex flex-wrap gap-3">
             <div className="w-24 h-5 rounded-full skeleton" />
@@ -96,7 +96,7 @@ export function ArticleHeaderSkeleton() {
             <div className="w-26 h-5 rounded-full skeleton" />
           </div>
         </div>
-        <div className="aspect-16/9 w-full overflow-hidden rounded-box skeleton" />
+        <div className="overflow-hidden aspect-video w-full rounded-box skeleton" />
       </div>
     </section>
   );

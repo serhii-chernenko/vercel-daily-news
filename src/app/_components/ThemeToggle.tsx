@@ -51,7 +51,7 @@ export function ThemeToggleSkeleton() {
   return (
     <span
       aria-hidden="true"
-      className="block size-[calc(var(--size-field,.25rem)_*_8)] rounded-field bg-base-300 motion-safe:animate-pulse"
+      className="block size-[calc(var(--size-field,.25rem)_*_8)] rounded-field skeleton"
     ></span>
   );
 }

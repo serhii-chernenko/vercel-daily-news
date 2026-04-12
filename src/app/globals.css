@@ -5,6 +5,7 @@
 @plugin "daisyui" {
   themes: false;
   logs: false;
+  /* exclude: "skeleton"; */
 }
 
 @plugin "daisyui/theme" {
@@ -114,8 +115,28 @@
   @apply size-4 shrink-0 transition-transform lg:group-hover/cta:motion-safe:-translate-x-0.5 group-focus-visible/cta:motion-safe:-translate-x-0.5;
 }
 
+@layer daisyui.l1 {
+  .skeleton {
+    @apply light:bg-base-300 dark:bg-base-content/30;
+  }
+}
+
 @layer components {
   :where(a.link) {
     @apply rounded-field;
+  }
+
+  .skeleton {
+    @apply rounded;
+  }
+
+  .skeleton-invert {
+    @apply skeleton rounded light:bg-base-100/40 dark:bg-base-100/20;
+    background-image: linear-gradient(
+      105deg,
+      #0000 0% 40%,
+      var(--color-base-content) 50%,
+      #0000 60% 100%
+    );
   }
 }

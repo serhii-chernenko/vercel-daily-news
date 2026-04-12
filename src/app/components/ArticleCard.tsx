@@ -22,7 +22,7 @@ export function ArticleCard({ article }: { article: Article }) {
         aria-labelledby={titleId}
         className="group card flex h-full overflow-hidden bg-base-100 no-underline shadow-sm ring-1 ring-base-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 focus-visible:motion-safe:shadow-xl focus-visible:motion-safe:-translate-y-1"
       >
-        <figure className="relative aspect-16/10 bg-base-300">
+        <figure className="relative aspect-video bg-base-300">
           {article.image ? (
             <Image
               src={article.image}
