@@ -6,7 +6,7 @@ export default function NotFound() {
     <section className="flex items-center min-h-[90svh] py-16 bg-base-200">
       <div className="container flex flex-col items-start justify-center grow gap-6">
         <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest opacity-50">
-          <SearchX className="size-6" />
+          <SearchX aria-hidden="true" className="size-6" />
           Article not found
         </p>
         <div className="max-w-2xl space-y-4">
@@ -18,7 +18,7 @@ export default function NotFound() {
           </p>
         </div>
         <Link href="/" className="group/cta btn btn-ghost btn-xs">
-          <ArrowLeft className="cta-icon-left" />
+          <ArrowLeft aria-hidden="true" className="cta-icon-left" />
           Go back to home page
         </Link>
       </div>

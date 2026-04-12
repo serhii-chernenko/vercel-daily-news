@@ -32,7 +32,7 @@ export function Hero() {
           </span>
         </div>
         <div className="sm:max-w-xl">
-          <h2 className="mb-4 text-md font-bold uppercase text-base-content/50 tracking-widest">
+          <h2 className="mb-4 text-md font-bold uppercase text-base-content/70 tracking-widest">
             The Vercel Daily
           </h2>
           <h1 className="text-5xl font-bold">News and insights for modern web developers</h1>
@@ -43,10 +43,10 @@ export function Hero() {
           <div className="flex max-sm:flex-col gap-4">
             <Link href="/" className="group/cta btn btn-primary">
               <span>Browse articles</span>
-              <ArrowRight className="cta-icon" />
+              <ArrowRight aria-hidden="true" className="cta-icon" />
             </Link>
             <button type="button" className="btn btn-primary btn-outline">
-              <Rss className="size-4" />
+              <Rss aria-hidden="true" className="size-4" />
               <span>Subscribe</span>
             </button>
           </div>

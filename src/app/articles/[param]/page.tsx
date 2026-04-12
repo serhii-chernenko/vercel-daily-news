@@ -1,9 +1,12 @@
 import "server-only";
 
 import type { Metadata } from "next";
+import type { Article } from "@/types/api";
 import { ArticlePageContent } from "@/app/articles/[param]/ArticlePageContent";
 import { getArticleDescription, getCachedArticle } from "@/app/articles/[param]/articlePageData";
+import { appConfig } from "@/config/app";
 import { getFeaturedArticles } from "@/server/featuredArticlesApi";
+import { getTrendingArticles } from "@/server/trendingArticlesApi";
 
 // https://nextjs.im/docs/app/guides/instant-navigation/
 export const unstable_instant = {
@@ -24,10 +27,39 @@ export const unstable_instant = {
 
 export type ArticlePageProps = PageProps<"/articles/[param]">;
 
-export async function generateStaticParams() {
-  const articles = await getFeaturedArticles(6);
+function dedupeArticlesBySlug(articles: Article[]) {
+  const uniqueSlugs = new Set<string>();
 
-  return articles.map((article) => ({
+  return articles.filter((article) => {
+    if (uniqueSlugs.has(article.slug)) {
+      return false;
+    }
+
+    uniqueSlugs.add(article.slug);
+
+    return true;
+  });
+}
+
+export async function generateStaticParams() {
+  const [featuredArticles, trendingArticles] = await Promise.all([
+    getFeaturedArticles(appConfig.articles.featuredLimit),
+    getTrendingArticles({ limit: appConfig.articles.trendingLimit }),
+  ]);
+  const relatedTrendingArticles = await Promise.all(
+    trendingArticles.map((article) =>
+      getTrendingArticles({
+        exclude: article.id,
+        limit: appConfig.articles.trendingLimit,
+      }),
+    ),
+  );
+
+  return dedupeArticlesBySlug([
+    ...featuredArticles,
+    ...trendingArticles,
+    ...relatedTrendingArticles.flat(),
+  ]).map((article) => ({
     param: article.slug,
   }));
 }

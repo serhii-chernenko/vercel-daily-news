@@ -41,7 +41,7 @@ export function ThemeToggle() {
       data-tip={label}
       onClick={() => setTheme(nextTheme)}
     >
-      <Icon className="icon" />
+      <Icon aria-hidden="true" className="icon" />
       <span className="sr-only">{label}</span>
     </button>
   );

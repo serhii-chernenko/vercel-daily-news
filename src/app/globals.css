@@ -5,7 +5,6 @@
 @plugin "daisyui" {
   themes: false;
   logs: false;
-  /* exclude: "skeleton"; */
 }
 
 @plugin "daisyui/theme" {
@@ -88,6 +87,13 @@
   &:where([data-theme="dark"], [data-theme="dark"] *) {
     @slot;
   }
+}
+
+@theme {
+  --breakpoint-fullhd: 120rem;
+  --breakpoint-2k: 160rem;
+  --breakpoint-4k: 240rem;
+  --breakpoint-5k: 320rem;
 }
 
 /* https://github.com/tailwindlabs/tailwindcss/discussions/18091 */

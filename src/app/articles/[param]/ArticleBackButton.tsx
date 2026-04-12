@@ -23,7 +23,7 @@ export function ArticleBackButton() {
       onClick={handleClick}
       className="group/cta btn btn-ghost btn-xs w-fit hitslop"
     >
-      <ArrowLeft className="cta-icon-left" />
+      <ArrowLeft aria-hidden="true" className="cta-icon-left" />
       <span>Go back</span>
     </button>
   );
