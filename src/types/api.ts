@@ -13,6 +13,12 @@ export interface BreakingNewsResponse {
   success: boolean;
 }
 
+export interface ApiError {
+  code: string;
+  details?: unknown;
+  message: string;
+}
+
 export interface ArticleParagraphBlock {
   text: string;
   type: "paragraph";
@@ -91,3 +97,15 @@ export interface ArticlesResponse {
   meta?: ArticlesMeta;
   success: boolean;
 }
+
+export interface ArticleResponse {
+  data: Article;
+  success: true;
+}
+
+export interface ArticleErrorResponse {
+  error: ApiError;
+  success: false;
+}
+
+export type ArticleApiResponse = ArticleResponse | ArticleErrorResponse;

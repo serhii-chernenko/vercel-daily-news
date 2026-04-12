@@ -18,6 +18,10 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    // https://nextjs.im/docs/app/guides/instant-navigation/
+    instantNavigationDevToolsToggle: true,
+  },
 } satisfies NextConfig;
 
 export default nextConfig;
