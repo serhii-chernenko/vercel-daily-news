@@ -49,7 +49,7 @@ export function ArticleHeader({ article }: { article: Article }) {
             ))}
           </div>
         </div>
-        <div className="overflow-hidden rounded-box border border-base-300 bg-base-100 shadow-sm">
+        <div className="overflow-hidden rounded-box bg-base-300 shadow-sm">
           {article.image ? (
             <div className="relative aspect-16/9 w-full">
               <Image
@@ -57,8 +57,8 @@ export function ArticleHeader({ article }: { article: Article }) {
                 alt={article.title}
                 fill
                 preload
-                sizes="(min-width: 1536px) 1440px, (min-width: 1024px) calc(100vw - 4rem), 100vw"
-                className="object-cover"
+                sizes="(min-width: 1920px) 1886px, calc(100vw - 2rem)"
+                className="object-cover object-center"
               />
             </div>
           ) : (

@@ -138,12 +138,16 @@ function renderArticleBlock(block: ArticleContentBlock, articleTitle: string, in
         <Fragment key={`${block.type}-${index}`}>
           {block?.src ? (
             <figure key={`${block.type}-${index}`}>
-              <Image
-                src={block.src}
-                alt={block.alt || articleTitle}
-                loading="lazy"
-                className="w-full object-cover"
-              />
+              <div className="not-prose relative aspect-16/9 w-full overflow-hidden rounded-box bg-base-300">
+                <Image
+                  src={block.src}
+                  alt={block.alt || articleTitle}
+                  fill
+                  loading="lazy"
+                  sizes="(min-width: 1024px) 896px, (min-width: 640px) calc(100vw - 4rem), calc(100vw - 2rem)"
+                  className="object-cover object-center"
+                />
+              </div>
               {block.caption ? <figcaption>{renderInlineMarkup(block.caption)}</figcaption> : null}
             </figure>
           ) : null}
