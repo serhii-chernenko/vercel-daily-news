@@ -32,7 +32,7 @@ export function Hero() {
           </span>
         </div>
         <div className="sm:max-w-xl">
-          <h2 className="mb-4 text-md font-bold uppercase text-base-content/50 tracking-widest">
+          <h2 className="mb-4 text-md font-bold uppercase text-base-content/70 tracking-widest">
             The Vercel Daily
           </h2>
           <h1 className="text-5xl font-bold">News and insights for modern web developers</h1>
