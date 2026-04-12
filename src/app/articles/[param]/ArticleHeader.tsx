@@ -27,23 +27,23 @@ export function ArticleHeader({ article }: { article: Article }) {
           </div>
           <div className="flex flex-wrap gap-2">
             <span className="badge badge-primary badge-outline badge-sm rounded-full">
-              <UserRound className="size-3 shrink-0" />
+              <UserRound aria-hidden="true" className="size-3 shrink-0" />
               <span>{authorName}</span>
             </span>
             <time
               dateTime={article.publishedAt}
               className="badge badge-primary badge-outline badge-sm rounded-full"
             >
-              <CalendarDays className="size-3 shrink-0" />
+              <CalendarDays aria-hidden="true" className="size-3 shrink-0" />
               <span>{formatPublishedDate(article.publishedAt)}</span>
             </time>
             <span className="badge badge-primary badge-outline badge-sm rounded-full">
-              <Folder className="size-3 shrink-0" />
+              <Folder aria-hidden="true" className="size-3 shrink-0" />
               {formatCategory(article.category)}
             </span>
             {article.tags?.map((tag) => (
               <span key={tag} className="badge badge-primary badge-outline badge-sm rounded-full">
-                <Tag className="size-3 shrink-0" />
+                <Tag aria-hidden="true" className="size-3 shrink-0" />
                 <span>{tag}</span>
               </span>
             ))}
@@ -64,7 +64,7 @@ export function ArticleHeader({ article }: { article: Article }) {
             </div>
           ) : (
             <div className="flex aspect-video items-center justify-center gap-3 bg-base-300">
-              <ImageOff className="size-12 opacity-50" />
+              <ImageOff aria-hidden="true" className="size-12 opacity-50" />
               <span className="sr-only">Image coming soon</span>
             </div>
           )}

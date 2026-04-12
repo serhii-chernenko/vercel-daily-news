@@ -43,10 +43,10 @@ export function Hero() {
           <div className="flex max-sm:flex-col gap-4">
             <Link href="/" className="group/cta btn btn-primary">
               <span>Browse articles</span>
-              <ArrowRight className="cta-icon" />
+              <ArrowRight aria-hidden="true" className="cta-icon" />
             </Link>
             <button type="button" className="btn btn-primary btn-outline">
-              <Rss className="size-4" />
+              <Rss aria-hidden="true" className="size-4" />
               <span>Subscribe</span>
             </button>
           </div>

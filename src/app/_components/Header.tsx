@@ -39,7 +39,7 @@ export function Header() {
                   aria-label="Home"
                   className="btn btn-ghost btn-square btn-sm histlop"
                 >
-                  <Home className="icon" />
+                  <Home aria-hidden="true" className="icon" />
                   <span className="sr-only">Home page</span>
                 </Link>
               </li>
@@ -49,7 +49,7 @@ export function Header() {
                   aria-label="Search"
                   className="btn btn-ghost btn-square btn-sm histlop"
                 >
-                  <Search className="icon" />
+                  <Search aria-hidden="true" className="icon" />
                   <span className="sr-only">Search</span>
                 </Link>
               </li>
