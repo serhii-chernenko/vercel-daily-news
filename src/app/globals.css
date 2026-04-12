@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@plugin "@tailwindcss/typography";
+
 @plugin "daisyui" {
   themes: false;
   logs: false;
@@ -106,6 +108,10 @@
 
 @utility cta-icon {
   @apply size-4 shrink-0 transition-transform lg:group-hover/cta:motion-safe:translate-x-0.5 group-focus-visible/cta:motion-safe:translate-x-0.5;
+}
+
+@utility cta-icon-left {
+  @apply size-4 shrink-0 transition-transform lg:group-hover/cta:motion-safe:-translate-x-0.5 group-focus-visible/cta:motion-safe:-translate-x-0.5;
 }
 
 @layer components {

@@ -4,16 +4,8 @@ import type { Route } from "next";
 import type { Article } from "@/types/api";
 import Image from "next/image";
 import Link from "next/link";
+import { formatPublishedDate } from "@/utils/date";
 import { ArrowRight, ImageOff } from "lucide-react";
-
-const publishedDateFormatter = new Intl.DateTimeFormat("en", {
-  dateStyle: "long",
-  timeZone: "UTC",
-});
-
-function formatPublishedDate(publishedAt: string) {
-  return publishedDateFormatter.format(new Date(publishedAt));
-}
 
 function getArticleHref(slug: string): Route {
   return `/articles/${encodeURIComponent(slug)}` as Route;
@@ -30,7 +22,7 @@ export function ArticleCard({ article }: { article: Article }) {
         aria-labelledby={titleId}
         className="group card flex h-full overflow-hidden bg-base-100 no-underline shadow-sm ring-1 ring-base-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 focus-visible:motion-safe:shadow-xl focus-visible:motion-safe:-translate-y-1"
       >
-        <figure className="relative aspect-16/10 bg-base-200">
+        <figure className="relative aspect-16/10 bg-base-300">
           {article.image ? (
             <Image
               src={article.image}
@@ -42,7 +34,7 @@ export function ArticleCard({ article }: { article: Article }) {
             />
           ) : (
             <div className="flex items-center justify-center size-full">
-              <ImageOff className="size-12" />
+              <ImageOff className="size-12 opacity-50" />
               <span className="sr-only">Image coming soon</span>
             </div>
           )}

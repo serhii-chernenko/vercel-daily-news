@@ -1,29 +1,84 @@
 import "server-only";
 
-import { Suspense } from "react";
+import type { Metadata } from "next";
+import { ArticlePageContent } from "@/app/articles/[param]/ArticlePageContent";
+import { getArticleDescription, getCachedArticle } from "@/app/articles/[param]/articlePageData";
+import { getFeaturedArticles } from "@/server/featuredArticlesApi";
 
-function ArticlePageFallback() {
-  return <p className="max-w-2xl text-base-content/70">Loading article placeholder...</p>;
+// https://nextjs.im/docs/app/guides/instant-navigation/
+export const unstable_instant = {
+  prefetch: "static",
+  samples: [
+    {
+      params: {
+        param: "building-secure-ai-agents",
+      },
+    },
+    {
+      params: {
+        param: "7n2g22iUu0N5xhrc7VVBSQ",
+      },
+    },
+  ],
+};
+
+export type ArticlePageProps = PageProps<"/articles/[param]">;
+
+export async function generateStaticParams() {
+  const articles = await getFeaturedArticles(6);
+
+  return articles.map((article) => ({
+    param: article.slug,
+  }));
 }
 
-async function ArticlePlaceholder({ param }: { param: string }) {
-  return (
-    <p className="max-w-2xl text-base-content/70">
-      Dynamic article page for <code>{param}</code>.
-    </p>
-  );
+export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
+  const { param } = await params;
+  const article = await getCachedArticle(param);
+
+  if (!article) {
+    return {
+      title: "Article not found | The Vercel Daily",
+      robots: {
+        follow: false,
+        index: false,
+      },
+    };
+  }
+
+  const description = getArticleDescription(article);
+
+  return {
+    title: `${article.title} | The Vercel Daily`,
+    description,
+    alternates: {
+      canonical: `/articles/${encodeURIComponent(article.slug)}`,
+    },
+    openGraph: {
+      type: "article",
+      title: article.title,
+      description,
+      publishedTime: article.publishedAt,
+      authors: article.author?.name ? [article.author.name] : undefined,
+      tags: article.tags,
+      images: article.image
+        ? [
+            {
+              alt: article.title,
+              url: article.image,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: article.image ? "summary_large_image" : "summary",
+      title: article.title,
+      description,
+      images: article.image ? [article.image] : undefined,
+    },
+  };
 }
 
-export default function ArticlePage({ params }: PageProps<"/articles/[param]">) {
-  return (
-    <section className="container flex min-h-[60svh] flex-col justify-center gap-4 py-16">
-      <p className="text-sm uppercase tracking-[0.2em] text-base-content/60">Article</p>
-      <h1 className="text-4xl font-bold tracking-tight">Placeholder</h1>
-      <Suspense fallback={<ArticlePageFallback />}>
-        {params.then(({ param }) => (
-          <ArticlePlaceholder param={param} />
-        ))}
-      </Suspense>
-    </section>
-  );
+export default function ArticlePage(props: ArticlePageProps) {
+  return <ArticlePageContent {...props} />;
 }
