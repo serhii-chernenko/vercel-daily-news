@@ -14,10 +14,5 @@ export async function CopyrightYear() {
 }
 
 export function CopyrightYearSkeleton() {
-  return (
-    <span
-      className="inline-block h-4 w-8 rounded bg-primary-content align-middle light:animate-pulse dark:animate-none"
-      aria-hidden="true"
-    />
-  );
+  return <span className="inline-block w-8 h-4 skeleton" aria-hidden="true" />;
 }

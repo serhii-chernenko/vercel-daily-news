@@ -37,9 +37,9 @@ export function FeaturedArticlesSkeleton() {
   return (
     <section aria-hidden="true" className="py-16 sm:py-20">
       <div className="container flex flex-col gap-8">
-        <div className="max-w-2xl space-y-3">
-          <div className="h-10 w-48 rounded bg-base-300 motion-safe:animate-pulse" />
-          <div className="h-5 w-72 rounded bg-base-300 motion-safe:animate-pulse" />
+        <div className="max-w-2xl space-y-4 mt-3">
+          <div className="h-8 w-48 skeleton" />
+          <div className="h-4 w-72 skeleton" />
         </div>
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {Array.from({ length: 6 }, (_, index) => (
@@ -47,24 +47,24 @@ export function FeaturedArticlesSkeleton() {
               key={index}
               className="card h-full overflow-hidden bg-base-100 shadow-sm ring-1 ring-base-300"
             >
-              <div className="aspect-[16/10] bg-base-300 motion-safe:animate-pulse" />
+              <div className="aspect-video rounded-box skeleton" />
               <div className="card-body gap-4">
                 <div className="flex items-center gap-2">
-                  <div className="h-3 w-20 rounded bg-base-300 motion-safe:animate-pulse" />
-                  <div className="h-3 w-3 rounded-full bg-base-300 motion-safe:animate-pulse" />
-                  <div className="h-3 w-32 rounded bg-base-300 motion-safe:animate-pulse" />
+                  <div className="h-3 w-20 skeleton" />
+                  <div className="size-1 skeleton" />
+                  <div className="h-3 w-32 skeleton" />
                 </div>
                 <div className="space-y-2">
-                  <div className="h-7 w-full rounded bg-base-300 motion-safe:animate-pulse" />
-                  <div className="h-7 w-4/5 rounded bg-base-300 motion-safe:animate-pulse" />
+                  <div className="h-7 w-full skeleton" />
+                  <div className="h-7 w-4/5 skeleton" />
                 </div>
                 <div className="space-y-2">
-                  <div className="h-4 w-full rounded bg-base-300 motion-safe:animate-pulse" />
-                  <div className="h-4 w-full rounded bg-base-300 motion-safe:animate-pulse" />
-                  <div className="h-4 w-3/4 rounded bg-base-300 motion-safe:animate-pulse" />
+                  <div className="h-4 w-full skeleton" />
+                  <div className="h-4 w-full skeleton" />
+                  <div className="h-4 w-3/4 skeleton" />
                 </div>
                 <div className="card-actions justify-end">
-                  <div className="h-8 w-28 rounded bg-base-300 motion-safe:animate-pulse" />
+                  <div className="h-8 w-28 rounded-field skeleton" />
                 </div>
               </div>
             </div>

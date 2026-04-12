@@ -47,12 +47,12 @@ export async function BreakingNewsBanner() {
 
 export function BreakingNewsBannerSkeleton() {
   return (
-    <aside aria-hidden="true" className="relative z-50 bg-primary text-primary-content">
+    <aside aria-hidden="true" className="relative z-50 bg-primary">
       <div className="container">
         <div className="flex min-h-12 items-center py-2">
           <div className="flex w-full items-center justify-center gap-2">
-            <span className="w-92 h-4 rounded bg-primary-content/20 motion-safe:animate-pulse" />
-            <span className="size-4 shrink-0 rounded bg-primary-content/20 motion-safe:animate-pulse" />
+            <span className="w-92 h-4 skeleton-invert" />
+            <span className="size-4 shrink-0 skeleton-invert" />
           </div>
         </div>
       </div>
