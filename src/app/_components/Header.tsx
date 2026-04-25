@@ -1,5 +1,6 @@
 import "server-only";
 
+import type { Route } from "next";
 import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,7 +38,7 @@ export function Header() {
                 <Link
                   href="/"
                   aria-label="Home"
-                  className="btn btn-ghost btn-square btn-sm histlop"
+                  className="btn btn-ghost btn-square btn-sm hitslop"
                 >
                   <Home aria-hidden="true" className="icon" />
                   <span className="sr-only">Home page</span>
@@ -45,9 +46,9 @@ export function Header() {
               </li>
               <li>
                 <Link
-                  href="/"
+                  href={"/search" as Route}
                   aria-label="Search"
-                  className="btn btn-ghost btn-square btn-sm histlop"
+                  className="btn btn-ghost btn-square btn-sm hitslop"
                 >
                   <Search aria-hidden="true" className="icon" />
                   <span className="sr-only">Search</span>

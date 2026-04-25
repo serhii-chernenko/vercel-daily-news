@@ -1,7 +1,8 @@
 import "server-only";
 
-import { Fragment, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { Article, ArticleContentBlock } from "@/types/api";
+import { Fragment } from "react";
 import Image from "next/image";
 
 export function ArticleBody({ article }: { article: Article }) {
