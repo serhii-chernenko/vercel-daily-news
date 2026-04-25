@@ -36,6 +36,10 @@ jobs:
 
       - name: Determine labels to add
         id: labels
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title || '' }}
+          PR_BODY: ${{ github.event.pull_request.body || '' }}
+          COMMIT_MESSAGES: ${{ steps.commits.outputs.messages }}
         run: |
           labels_to_add=""
 
@@ -43,13 +47,13 @@ jobs:
 
           for label in "${label_types[@]}"; do
             should_add_label=false
-            
+
             if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-              if [[ "${{ github.event.pull_request.body }}" == ${label}* ]]; then
+              if printf '%s\n%s\n' "$PR_TITLE" "$PR_BODY" | grep -qiE "^${label}(\(|:)"; then
                 should_add_label=true
               fi
-              
-              if [[ "${{ steps.commits.outputs.messages }}" == *"${label}:"* ]] || [[ "${{ steps.commits.outputs.messages }}" == *"${label}("* ]]; then
+
+              if printf '%s\n' "$COMMIT_MESSAGES" | grep -qiE "(^|[[:space:]])${label}(\(|:)"; then
                 should_add_label=true
               fi
             fi
