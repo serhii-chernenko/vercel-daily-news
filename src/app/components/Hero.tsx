@@ -41,7 +41,7 @@ export function Hero() {
             place.
           </p>
           <div className="flex max-sm:flex-col gap-4">
-            <Link href="/" className="group/cta btn btn-primary">
+            <Link href="/search" prefetch className="group/cta btn btn-primary">
               <span>Browse articles</span>
               <ArrowRight aria-hidden="true" className="cta-icon" />
             </Link>

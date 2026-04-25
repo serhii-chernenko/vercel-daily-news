@@ -109,3 +109,14 @@ export interface ArticleErrorResponse {
 }
 
 export type ArticleApiResponse = ArticleResponse | ArticleErrorResponse;
+
+export interface Category {
+  articleCount: number;
+  name: string;
+  slug: string;
+}
+
+export interface CategoriesResponse {
+  data: Category[];
+  success: boolean;
+}
