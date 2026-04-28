@@ -1,8 +1,8 @@
 import "server-only";
 
 import { cacheLife } from "next/cache";
-import { getBreakingNews } from "@/server/breakingNewsApi";
 import Link from "next/link";
+import { getBreakingNews } from "@/server/breakingNewsApi";
 import { TriangleAlert, ArrowRight } from "lucide-react";
 
 export async function BreakingNewsBanner() {
@@ -19,11 +19,12 @@ export async function BreakingNewsBanner() {
   return (
     <aside
       aria-live="polite"
-      className="relative z-50 bg-primary text-primary-content motion-safe:transition-transform duration-300 ring-primary ring-offset-2 has-focus-visible:ring-2"
+      className="relative z-50 bg-primary text-primary-content ring-primary ring-offset-2 has-focus-visible:ring-2"
     >
       <div className="container">
         <Link
           href={`/articles/${encodeURIComponent(banner.articleId)}`}
+          prefetch
           className="group/cta flex items-center gap-3 min-h-12 py-2 focus:outline-none"
         >
           <span className="flex items-center justify-center grow min-w-0">

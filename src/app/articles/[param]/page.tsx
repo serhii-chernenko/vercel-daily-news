@@ -13,11 +13,25 @@ export const unstable_instant = {
   prefetch: "static",
   samples: [
     {
+      cookies: [
+        {
+          name: "subscription_token",
+          value: null,
+        },
+      ],
+      headers: [["x-internal-subscription-state", "anonymous"]],
       params: {
         param: "building-secure-ai-agents",
       },
     },
     {
+      cookies: [
+        {
+          name: "subscription_token",
+          value: null,
+        },
+      ],
+      headers: [["x-internal-subscription-state", "anonymous"]],
       params: {
         param: "7n2g22iUu0N5xhrc7VVBSQ",
       },
