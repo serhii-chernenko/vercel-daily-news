@@ -13,6 +13,12 @@ export const unstable_instant = {
   prefetch: "runtime",
   samples: [
     {
+      cookies: [
+        {
+          name: "subscription_token",
+          value: null,
+        },
+      ],
       searchParams: {
         category: null,
         page: null,
