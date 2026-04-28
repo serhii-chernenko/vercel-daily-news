@@ -6,6 +6,8 @@ export const apiEndpoints = {
   articles: "/articles",
   breakingNews: "/breaking-news",
   categories: "/categories",
+  subscription: "/subscription",
+  subscriptionCreate: "/subscription/create",
   trendingArticles: "/articles/trending",
 } as const;
 

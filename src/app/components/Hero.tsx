@@ -1,8 +1,13 @@
 import "server-only";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Rss } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import {
+  SubscriptionControl,
+  SubscriptionControlSkeleton,
+} from "@/app/_components/SubscriptionControl";
 
 export function Hero() {
   return (
@@ -45,10 +50,9 @@ export function Hero() {
               <span>Browse articles</span>
               <ArrowRight aria-hidden="true" className="cta-icon" />
             </Link>
-            <button type="button" className="btn btn-primary btn-outline">
-              <Rss aria-hidden="true" className="size-4" />
-              <span>Subscribe</span>
-            </button>
+            <Suspense fallback={<SubscriptionControlSkeleton />}>
+              <SubscriptionControl />
+            </Suspense>
           </div>
         </div>
       </div>

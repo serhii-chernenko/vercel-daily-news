@@ -120,3 +120,23 @@ export interface CategoriesResponse {
   data: Category[];
   success: boolean;
 }
+
+export interface Subscription {
+  createdAt: string;
+  status: "active" | "inactive";
+  subscribedAt: string | null;
+  token: string;
+  updatedAt: string;
+}
+
+export interface SubscriptionResponse {
+  data: Subscription;
+  success: true;
+}
+
+export interface SubscriptionErrorResponse {
+  error: ApiError;
+  success: false;
+}
+
+export type SubscriptionApiResponse = SubscriptionResponse | SubscriptionErrorResponse;
