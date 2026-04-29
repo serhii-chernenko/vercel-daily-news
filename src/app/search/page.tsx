@@ -6,8 +6,11 @@ import { getCategories } from "@/server/categoriesApi";
 import { SearchControls, SearchControlsSkeleton } from "@/app/search/SearchControls";
 import { SearchResults, SearchResultsSkeleton } from "@/app/search/SearchResults";
 import { normalizeSearchPageParams } from "@/app/search/searchParams";
+import { SITE_NAME } from "@/app/siteMetadata";
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
+
+const SEARCH_DESCRIPTION = `Search recent ${SITE_NAME} articles by keyword and category.`;
 
 export const unstable_instant = {
   prefetch: "runtime",
@@ -30,8 +33,18 @@ export const unstable_instant = {
 };
 
 export const metadata: Metadata = {
-  description: "Search recent Vercel Daily News articles by keyword and category.",
-  title: "Search | Vercel Daily News",
+  description: SEARCH_DESCRIPTION,
+  title: "Browse articles",
+  alternates: {
+    canonical: "/search",
+  },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: "Browse articles",
+    description: SEARCH_DESCRIPTION,
+    url: "/search",
+  },
 };
 
 export default function SearchPage({ searchParams }: { searchParams: SearchParams }) {

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import type { Article } from "@/types/api";
 import { ArticlePageContent } from "@/app/articles/[param]/ArticlePageContent";
 import { getArticleDescription, getCachedArticle } from "@/app/articles/[param]/articlePageData";
+import { SITE_NAME } from "@/app/siteMetadata";
 import { appConfig } from "@/config/app";
 import { getFeaturedArticles } from "@/server/featuredArticlesApi";
 import { getTrendingArticles } from "@/server/trendingArticlesApi";
@@ -84,7 +85,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
   if (!article) {
     return {
-      title: "Article not found | The Vercel Daily",
+      title: "Article not found",
       robots: {
         follow: false,
         index: false,
@@ -93,17 +94,20 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 
   const description = getArticleDescription(article);
+  const articlePath = `/articles/${encodeURIComponent(article.slug)}`;
 
   return {
-    title: `${article.title} | The Vercel Daily`,
+    title: `${article.title}`,
     description,
     alternates: {
-      canonical: `/articles/${encodeURIComponent(article.slug)}`,
+      canonical: articlePath,
     },
     openGraph: {
       type: "article",
+      siteName: SITE_NAME,
       title: article.title,
       description,
+      url: articlePath,
       publishedTime: article.publishedAt,
       authors: article.author?.name ? [article.author.name] : undefined,
       tags: article.tags,
