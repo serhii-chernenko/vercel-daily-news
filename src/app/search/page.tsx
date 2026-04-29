@@ -31,7 +31,7 @@ export const unstable_instant = {
 
 export const metadata: Metadata = {
   description: "Search recent Vercel Daily News articles by keyword and category.",
-  title: "Search | Vercel Daily News",
+  title: "Browse articles",
 };
 
 export default function SearchPage({ searchParams }: { searchParams: SearchParams }) {
